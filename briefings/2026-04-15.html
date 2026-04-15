@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — April 15, 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FFFDE7;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #424245;
+    padding: 40px 24px 60px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .frios-badge {
+    display: inline-block;
+    background: #C63493;
+    color: #fff;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .greeting h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 4px;
+  }
+  .greeting .date {
+    font-size: 17px;
+    color: #86868b;
+    margin-bottom: 28px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    transition: box-shadow 0.2s ease;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.13); }
+
+  .card h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #86868b;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .card.events { border-left: 4px solid #00abc7; }
+  .card.opportunities { border-left: 4px solid #83DF9D; }
+
+  .priority-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .priority-item:last-child { margin-bottom: 0; }
+  .priority-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: #C63493;
+    min-width: 28px;
+    line-height: 1.2;
+  }
+  .priority-text {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-top: 4px;
+  }
+  .priority-text strong { color: #333; }
+
+  .time-pill {
+    display: inline-block;
+    background: #f5f5f7;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'SF Mono', SFMono-Regular, Menlo, monospace;
+    color: #333;
+    white-space: nowrap;
+  }
+  .event-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e5e7;
+  }
+  .event-row:last-child { border-bottom: none; }
+  .event-details { flex: 1; }
+  .event-name { font-weight: 600; color: #333; font-size: 15px; }
+  .event-meta { font-size: 13px; color: #86868b; margin-top: 2px; line-height: 1.5; }
+  .event-meta a { color: #00abc7; text-decoration: none; }
+  .event-meta a:hover { opacity: 0.7; }
+
+  .flag-pill {
+    display: inline-block;
+    background: #C63493;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .flag-pill.info {
+    background: #00abc7;
+  }
+  .flag-pill.warn {
+    background: #F69235;
+  }
+  .flag-pill.green {
+    background: #83DF9D;
+    color: #333;
+  }
+
+  .opp-row {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e5e7;
+  }
+  .opp-row:last-child { border-bottom: none; }
+  .opp-name { font-weight: 600; color: #333; font-size: 15px; }
+  .opp-meta { font-size: 13px; color: #86868b; margin-top: 2px; line-height: 1.6; }
+  .opp-meta a { color: #83DF9D; text-decoration: none; font-weight: 600; }
+  .opp-meta a:hover { opacity: 0.7; }
+  .frios-fit {
+    display: inline-block;
+    background: #f0faf3;
+    color: #2a7a45;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin-top: 4px;
+  }
+
+  .schedule-row {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5e7;
+  }
+  .schedule-row:last-child { border-bottom: none; }
+  .schedule-details { flex: 1; font-size: 14px; }
+  .schedule-title { font-weight: 600; color: #333; }
+  .schedule-note { font-size: 13px; color: #86868b; }
+  .free-block {
+    background: #f0faf3;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 6px 0;
+    font-size: 13px;
+    color: #2a7a45;
+    font-weight: 500;
+  }
+
+  .email-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e5e7;
+  }
+  .email-row:last-child { border-bottom: none; }
+  .email-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .dot-urgent { background: #C63493; }
+  .dot-response { background: #FACC4D; }
+  .dot-fyi { background: #00abc7; }
+  .email-content { flex: 1; }
+  .email-sender { font-weight: 600; color: #333; font-size: 14px; }
+  .email-subject { font-size: 13px; color: #424245; }
+  .email-summary { font-size: 12px; color: #86868b; margin-top: 2px; }
+
+  .reply-toggle {
+    background: none;
+    border: 1px solid #e5e5e7;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #86868b;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s;
+  }
+  .reply-toggle:hover { background: #f5f5f7; color: #333; }
+  .reply-box {
+    display: none;
+    background: #f9f9fb;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #424245;
+    border-left: 3px solid #C63493;
+  }
+
+  .divider { height: 1px; background: #e5e5e7; margin: 0; }
+
+  .package-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFF8E1;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #7a6100;
+  }
+
+  @media (max-width: 500px) {
+    body { padding: 24px 16px 40px; }
+    .greeting h1 { font-size: 28px; }
+    .card { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Greeting -->
+  <div class="greeting">
+    <div class="frios-badge">🍭 Frios Gourmet Pops · Metro Jackson, MS</div>
+    <h1>Good morning, Matt.</h1>
+    <p class="date">Wednesday, April 15, 2026</p>
+  </div>
+
+  <!-- Today's Focus -->
+  <div class="card priorities">
+    <h2>Today's Focus</h2>
+    <div class="priority-item">
+      <span class="priority-num">1</span>
+      <span class="priority-text"><strong>Nail the Pop Drop at Park Place Christian Academy.</strong> 120 pops for Kim Merideth — drop-off at 10:30 AM in Pearl. Confirm you're loaded and ready to roll.</span>
+    </div>
+    <div class="priority-item">
+      <span class="priority-num">2</span>
+      <span class="priority-text"><strong>Call Anne Helton back.</strong> She's been trying to reach you about an event — she's flexible on timing. Lock down the details today.</span>
+    </div>
+    <div class="priority-item">
+      <span class="priority-num">3</span>
+      <span class="priority-text"><strong>Finalize the Callie Tate / MS College Nursing deal.</strong> 300 pops on April 22 — she wants a call to dial in details. Confirm and get it on the calendar.</span>
+    </div>
+  </div>
+
+  <!-- Events & Bookings -->
+  <div class="card events">
+    <h2>Events & Bookings</h2>
+    <div class="event-row">
+      <div>
+        <span class="time-pill">10:30 AM</span>
+      </div>
+      <div class="event-details">
+        <div class="event-name">Kim Merideth — Pop Drop <span class="flag-pill info">120 pops</span></div>
+        <div class="event-meta">
+          📍 Park Place Christian Academy, Park Pl Dr, Pearl, MS<br>
+          📞 601-826-7211 &nbsp;|&nbsp; ⏱ 10:30 AM – 12:30 PM<br>
+          <a href="https://go.thryv.com/app/appointments/yoqc9vynyxh0ph07" target="_blank">View in Thryv →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="package-banner">
+      📦 &nbsp;<strong>FGP Manufacturing shipment arriving today</strong> — UPS tracking shows delivery by 7:00 PM. Your order from Kirsten at HQ shipped yesterday.
+    </div>
+  </div>
+
+  <!-- Upcoming Pipeline (next 7 days) -->
+  <div class="card" style="border-left: 4px solid #FACC4D;">
+    <h2>Pipeline — Needs Action</h2>
+
+    <div class="event-row">
+      <div style="min-width: 80px;">
+        <span class="time-pill">Apr 22</span>
+      </div>
+      <div class="event-details">
+        <div class="event-name">Callie Tate — MS College School of Nursing <span class="flag-pill warn">Call needed</span></div>
+        <div class="event-meta">
+          300 pops · Pop Drop/Catering · 12:00–2:00 PM<br>
+          📍 200 South Capitol St, Jackson · 📧 ctate@mc.edu<br>
+          She's ready to finalize — wants a quick call to confirm details. 11:30 drop-off discussed.
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div style="min-width: 80px;">
+        <span class="time-pill">Jul 3</span>
+      </div>
+      <div class="event-details">
+        <div class="event-name">Franny — Pop Drop in Flora <span class="flag-pill green">Draft ready</span></div>
+        <div class="event-meta">
+          100 pops · 6:30–7:00 PM · 📍 1211 Spring Lake Ln, Flora, MS 39071<br>
+          📧 frannyclark0@gmail.com · Draft reply is in Gmail — review and send.
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div style="min-width: 80px;">
+        <span class="time-pill">TBD</span>
+      </div>
+      <div class="event-details">
+        <div class="event-name">Anne Helton — Event Inquiry <span class="flag-pill">Call her back</span></div>
+        <div class="event-meta">
+          📧 annehelton316@gmail.com<br>
+          She tried calling and emailing. Said "Good luck with the tournament!" — she's understanding on timing. Follow up today.
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div style="min-width: 80px;">
+        <span class="time-pill">ASAP</span>
+      </div>
+      <div class="event-details">
+        <div class="event-name">Kelsey Mason — Insurance Renewal <span class="flag-pill warn">Form needed</span></div>
+        <div class="event-meta">
+          Collins & Company Enterprises, LLC renewal paperwork<br>
+          📧 kelsey.mason@sfbcic.com · She needs the form back ASAP this week.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local Opportunities -->
+  <div class="card opportunities">
+    <h2>Jackson MS Opportunities</h2>
+
+    <div class="opp-row">
+      <div class="opp-name">Vintage Market Days of Mississippi — "Oh Honey"</div>
+      <div class="opp-meta">
+        📅 April 17–19 &nbsp;|&nbsp; 📍 Clyde Muse Center, Pearl<br>
+        Three-day curated vintage market with vendors from across the country. High foot traffic, family-friendly, upscale vibe.
+        <br><span class="frios-fit">🍭 Vendor / Sweet Ride Pop-Up</span>
+        &nbsp; <a href="https://www.themississippimonitor.com/vintage-market-days-of-mississippi-brings-small-businesses-and-community-energy-to-pearl/" target="_blank">Details →</a>
+      </div>
+    </div>
+
+    <div class="opp-row">
+      <div class="opp-name">Lynch Street Cultural Arts Festival (33rd Annual)</div>
+      <div class="opp-meta">
+        📅 April 25 &nbsp;|&nbsp; 📍 1072 John R. Lynch St, Jackson (near University Blvd)<br>
+        Major annual street festival with live music, food, and community energy. Huge vendor opportunity.
+        <br><span class="frios-fit">🍭 Vendor / Sweet Ride</span>
+      </div>
+    </div>
+
+    <div class="opp-row">
+      <div class="opp-name">Pearl Day in the Park</div>
+      <div class="opp-meta">
+        📅 April 25 &nbsp;|&nbsp; 📍 Pearl, MS<br>
+        Community festival right in your territory. Great for brand visibility and direct sales.
+        <br><span class="frios-fit">🍭 Vendor / Sweet Ride Pop-Up</span>
+      </div>
+    </div>
+
+    <div class="opp-row">
+      <div class="opp-name">Okatoma Festival</div>
+      <div class="opp-meta">
+        📅 May 3 &nbsp;|&nbsp; 📍 Covington County Courthouse, Collins (expansion territory)<br>
+        Free all-day festival: 5K, parade, arts & crafts, food vendors, live entertainment. 8 AM – 7 PM. Perfect expansion territory test.
+        <br><span class="frios-fit">🍭 Vendor / Pop Drop</span>
+        &nbsp; <a href="https://www.todayinmississippi.com/event/the-covington-county-chamber-of-commerce-annual-okatoma-festival/" target="_blank">Details →</a>
+      </div>
+    </div>
+
+    <div class="opp-row">
+      <div class="opp-name">Mississippi Makers Fest</div>
+      <div class="opp-meta">
+        📅 May 9 &nbsp;|&nbsp; 📍 Entergy Plaza at Two Mississippi Museums, Jackson<br>
+        Free, family-friendly — local music, artisans, food trucks, make-and-take activities. High-energy crowd, natural Frios fit.
+        <br><span class="frios-fit">🍭 Vendor / Sweet Ride</span>
+      </div>
+    </div>
+
+    <div class="opp-row">
+      <div class="opp-name">Flowood Family Festival</div>
+      <div class="opp-meta">
+        📅 May 15 &nbsp;|&nbsp; 📍 Flowood, MS<br>
+        Family-focused community event in a high-traffic Rankin County suburb. Great pop party and brand awareness opportunity.
+        <br><span class="frios-fit">🍭 Vendor / Pop Party Demo</span>
+      </div>
+    </div>
+
+    <div style="background: #f9f9fb; border-radius: 10px; padding: 12px 14px; margin-top: 12px; font-size: 13px; color: #86868b;">
+      💡 <strong>Tip:</strong> Check local Facebook groups, Nextdoor, and the Brandon/Flowood/Ridgeland city event pages for additional pop-up opportunities this week.
+    </div>
+  </div>
+
+  <!-- Schedule -->
+  <div class="card calendar">
+    <h2>Schedule</h2>
+    <div class="schedule-row">
+      <span class="time-pill">10:30a</span>
+      <div class="schedule-details">
+        <div class="schedule-title">Kim Merideth Pop Drop — Park Place Christian Academy, Pearl</div>
+        <div class="schedule-note">120 pops · 10:30 AM – 12:30 PM</div>
+      </div>
+    </div>
+    <div class="free-block">
+      🟢 <strong>Morning open block (before 10:30 AM)</strong> — Prep pops, load the truck, make follow-up calls to Anne Helton and Callie Tate.
+    </div>
+    <div class="free-block">
+      🟢 <strong>Afternoon open (after 12:30 PM)</strong> — Big hustle window. Call Anne back, finalize MS College deal, send Franny's draft, fill out insurance renewal form, and prospect for weekend events.
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="card email">
+    <h2>Email</h2>
+
+    <div class="email-row">
+      <div class="email-dot dot-urgent"></div>
+      <div class="email-content">
+        <div class="email-sender">Kelsey Mason (SF&BCI Insurance)</div>
+        <div class="email-subject">Collins & Company Enterprises — Insurance Renewal Form</div>
+        <div class="email-summary">She's following up urgently — needs the renewal form back at your earliest convenience this week. She tried calling too.</div>
+        <button class="reply-toggle" onclick="toggleReply(this)">Show suggested reply</button>
+        <div class="reply-box">
+          Hi Kelsey, thanks for the follow-up — I know this is time-sensitive. I'll get the form completed and back to you by end of day Thursday. Appreciate your patience! — Matt
+        </div>
+      </div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-dot dot-urgent"></div>
+      <div class="email-content">
+        <div class="email-sender">Anne Helton</div>
+        <div class="email-subject">Re: Frios Gourmet Pops Follow Up</div>
+        <div class="email-summary">Tried calling multiple times. Wants to chat about an event. She's understanding about the tournament — said "we can wait until tomorrow." Call her today.</div>
+        <button class="reply-toggle" onclick="toggleReply(this)">Show suggested reply</button>
+        <div class="reply-box">
+          Hi Anne! Sorry about the delay — golf tournament had me tied up all day yesterday. I'd love to chat about your event. Are you free for a quick call this afternoon? I'm open after 1 PM. — Matt
+        </div>
+      </div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-dot dot-response"></div>
+      <div class="email-content">
+        <div class="email-sender">Callie Tate (Mississippi College)</div>
+        <div class="email-subject">Re: Frios Gourmet Pops — MS College School of Nursing</div>
+        <div class="email-summary">300 pops for April 22. She confirmed 11:30 drop-off works perfectly and wants a call to finalize details. Very enthusiastic.</div>
+        <button class="reply-toggle" onclick="toggleReply(this)">Show suggested reply</button>
+        <div class="reply-box">
+          Hey Callie! Great — 11:30 drop-off it is. I'm free for a quick call today after 1 PM if that works? We can nail down flavors, setup, and any other details. Looking forward to it! — Matt
+        </div>
+      </div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-dot dot-response"></div>
+      <div class="email-content">
+        <div class="email-sender">Franny Clark (New Inquiry)</div>
+        <div class="email-subject">Pop Drop / Delivery — 100 pops, July 3 in Flora</div>
+        <div class="email-summary">New web form inquiry. Your bot drafted a reply — it's sitting in Gmail drafts. Review the timing note (you flagged a conflict that evening) and send.</div>
+      </div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-dot dot-fyi"></div>
+      <div class="email-content">
+        <div class="email-sender">Kirsten Loper (Frios HQ)</div>
+        <div class="email-subject">Your Order Has Shipped</div>
+        <div class="email-summary">Order shipped yesterday, April 14. UPS tracking shows delivery by 7 PM today.</div>
+      </div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-dot dot-fyi"></div>
+      <div class="email-content">
+        <div class="email-sender">Katy Bryant (Jackson Prep)</div>
+        <div class="email-subject">Girls Flag Football</div>
+        <div class="email-summary">Sharing highlights from 4th grade girls flag football. Relationship-building touchpoint — could be a future Pop Party lead for Jackson Prep events.</div>
+      </div>
+    </div>
+
+    <div class="email-row">
+      <div class="email-dot dot-fyi"></div>
+      <div class="email-content">
+        <div class="email-sender">Mike Dion (F9 Finance)</div>
+        <div class="email-subject">[#105] Claude Cowork built my CFO deck in one prompt</div>
+        <div class="email-summary">Newsletter about structured finance decks with Claude. FYI / inspiration for your own financial reporting.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleReply(btn) {
+  const box = btn.nextElementSibling;
+  if (box.style.display === 'block') {
+    box.style.display = 'none';
+    btn.textContent = 'Show suggested reply';
+  } else {
+    box.style.display = 'block';
+    btn.textContent = 'Hide reply';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<\!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frios Dashboards — Metro Jackson</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #FFFDE7;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #424245;
+    padding: 40px 24px 60px;
+  }
+  .container { max-width: 620px; margin: 0 auto; }
+  .frios-badge {
+    display: inline-block;
+    background: #C63493;
+    color: #fff;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  h1 { font-size: 32px; font-weight: 700; color: #333; margin-bottom: 4px; }
+  .subtitle { font-size: 16px; color: #86868b; margin-bottom: 32px; }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    transition: box-shadow 0.2s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.13); }
+  .card h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: #86868b; font-weight: 600; margin-bottom: 12px; }
+  .card.briefings { border-left: 4px solid #00abc7; }
+  .card.cardlots { border-left: 4px solid #83DF9D; }
+  .link-list { list-style: none; }
+  .link-list li { padding: 8px 0; border-bottom: 1px solid #e5e5e7; }
+  .link-list li:last-child { border-bottom: none; }
+  .link-list a { color: #00abc7; text-decoration: none; font-weight: 500; font-size: 15px; }
+  .link-list a:hover { opacity: 0.7; }
+  .empty { color: #86868b; font-size: 14px; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="frios-badge">🍭 Frios Gourmet Pops · Metro Jackson</div>
+  <h1>Dashboards</h1>
+  <p class="subtitle">Morning briefings, card lot scouts, and more.</p>
+
+  <div class="card briefings">
+    <h2>Morning Briefings</h2>
+    <ul class="link-list" id="briefings-list">
+      <li><a href="briefings/2026-04-15.html">April 15, 2026</a></li>
+    </ul>
+  </div>
+
+  <div class="card cardlots">
+    <h2>Card Lot Scouts</h2>
+    <ul class="link-list" id="cardlots-list">
+      <li class="empty">No card lot scouts yet — they'll appear here automatically.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
