@@ -28,3 +28,399 @@
     margin-bottom: 10px;
     letter-spacing: 0.3px;
   }
+  .greeting h1 { font-size: 34px; font-weight: 700; color: #333333; line-height: 1.15; }
+  .greeting .date { font-size: 17px; color: #86868b; margin-top: 6px; }
+
+  /* Cards */
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s ease;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.13); }
+  .card h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #86868b;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .card.events { border-left: 4px solid #00abc7; }
+  .card.opportunities { border-left: 4px solid #83DF9D; }
+
+  hr.divider { border: none; border-top: 1px solid #e5e5e7; margin: 14px 0; }
+
+  /* Priorities */
+  .priority-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .priority-item:last-child { margin-bottom: 0; }
+  .priority-num { font-size: 24px; font-weight: 700; color: #C63493; line-height: 1; min-width: 28px; }
+  .priority-text { font-size: 15px; line-height: 1.5; color: #333333; font-weight: 500; }
+  .priority-sub { font-size: 13px; color: #86868b; margin-top: 2px; font-weight: 400; }
+
+  /* Events */
+  .event-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .event-item:last-child { margin-bottom: 0; }
+  .time-pill {
+    background: #f5f5f7;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-weight: 600;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    flex-shrink: 0;
+    color: #333333;
+  }
+  .event-details { flex: 1; }
+  .event-name { font-size: 15px; font-weight: 600; color: #333333; }
+  .event-meta { font-size: 13px; color: #86868b; margin-top: 3px; line-height: 1.5; }
+  .flag-pill {
+    display: inline-block;
+    background: #C63493;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin-top: 5px;
+  }
+  .good-pill {
+    display: inline-block;
+    background: #00abc7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 8px;
+    margin-top: 5px;
+  }
+
+  /* Opportunities */
+  .opp-item { margin-bottom: 14px; }
+  .opp-item:last-child { margin-bottom: 0; }
+  .opp-header { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .opp-name { font-size: 15px; font-weight: 600; color: #333333; }
+  .opp-meta { font-size: 13px; color: #86868b; margin-top: 3px; line-height: 1.6; }
+  .opp-tag {
+    display: inline-block;
+    background: #83DF9D22;
+    color: #2a7a44;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 2px 9px;
+    white-space: nowrap;
+    margin-left: 4px;
+  }
+  .opp-link { font-size: 13px; color: #00abc7; text-decoration: none; font-weight: 500; }
+  .opp-link:hover { opacity: 0.7; }
+
+  /* Calendar */
+  .cal-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; }
+  .cal-item:last-child { margin-bottom: 0; }
+  .cal-title { font-size: 15px; font-weight: 500; color: #333333; }
+  .cal-detail { font-size: 13px; color: #86868b; margin-top: 2px; }
+  .free-block {
+    background: #83DF9D22;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #2a7a44;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  /* Email */
+  .email-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+  .email-item:last-child { margin-bottom: 0; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .dot-urgent { background: #C63493; }
+  .dot-respond { background: #FACC4D; }
+  .dot-fyi { background: #00abc7; }
+  .email-body { flex: 1; }
+  .email-sender { font-size: 14px; font-weight: 600; color: #333333; }
+  .email-subject { font-size: 13px; color: #424245; margin-top: 1px; }
+  .email-snippet { font-size: 12px; color: #86868b; margin-top: 2px; line-height: 1.5; }
+  .show-reply-btn {
+    background: none;
+    border: 1px solid #e5e5e7;
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #424245;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background 0.15s;
+  }
+  .show-reply-btn:hover { background: #f5f5f7; }
+  .reply-box {
+    display: none;
+    background: #f5f5f7;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: #333333;
+    margin-top: 8px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+  .reply-label { font-size: 11px; font-weight: 600; color: #86868b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+
+  /* Legend */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #86868b; }
+</style>
+</head>
+<body>
+<div class="inner">
+
+  <!-- Greeting -->
+  <div class="greeting">
+    <div class="frios-badge">🍭 Frios Gourmet Pops · Jackson, MS</div>
+    <h1>Good morning, Matt.</h1>
+    <p class="date">Thursday, April 23, 2026</p>
+  </div>
+
+  <!-- Today's Focus -->
+  <div class="card">
+    <h2>Today's Focus</h2>
+    <div class="priority-item">
+      <div class="priority-num">1</div>
+      <div>
+        <div class="priority-text">Prep &amp; rock the Evie Crawford Sweet Ride at 4:30 PM</div>
+        <div class="priority-sub">203 Calhoun Station Pkwy, Madison — 2-hr event, 180 pops. Confirm supplies, load up, and leave with time to spare.</div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="priority-item">
+      <div class="priority-num">2</div>
+      <div>
+        <div class="priority-text">Schedule the follow-up call with Callie at Mississippi College School of Nursing</div>
+        <div class="priority-sub">She replied and wants to nail down details for 300 pops. Don't let this one go cold — it's a great account.</div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="priority-item">
+      <div class="priority-num">3</div>
+      <div>
+        <div class="priority-text">Register as a vendor for the Lynch Street Cultural Arts Festival (April 25)</div>
+        <div class="priority-sub">Two days away — community festival in the 39203 zip, perfect for Sweet Ride or cart. Act today or miss the window.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events & Bookings -->
+  <div class="card events">
+    <h2>Events &amp; Bookings</h2>
+    <div class="event-item">
+      <div class="time-pill">4:30 PM</div>
+      <div class="event-details">
+        <div class="event-name">Evie Crawford — Sweet Ride Experience (2 HR)</div>
+        <div class="event-meta">
+          📍 203 Calhoun Station Pkwy, Madison, MS<br>
+          👤 Evie Crawford · <a href="mailto:evie@bellamariedevelopment.com" style="color:#00abc7;text-decoration:none;">evie@bellamariedevelopment.com</a><br>
+          🍭 180 pops · Ends 6:30 PM
+        </div>
+        <span class="good-pill">✓ Confirmed</span>
+      </div>
+    </div>
+    <hr class="divider">
+    <div style="font-size:13px; color:#86868b; padding: 6px 0 2px;">
+      No other bookings today. Morning and early afternoon are wide open — great time to hustle on the Mississippi College inquiry and future vendor registrations. 💪
+    </div>
+  </div>
+
+  <!-- Local Opportunities -->
+  <div class="card opportunities">
+    <h2>Jackson MS Opportunities</h2>
+
+    <div class="opp-item">
+      <div class="opp-header">
+        <span class="opp-name">33rd Annual Lynch Street Cultural Arts Festival</span>
+        <span class="opp-tag">Vendor</span>
+      </div>
+      <div class="opp-meta">📅 April 25, 2026 &nbsp;|&nbsp; 📍 University Blvd – Poindexter St, Jackson 39203<br>Street festival in the heart of Jackson — ideal for Sweet Ride or cart. <strong>2 days away — contact organizers today.</strong></div>
+      <a class="opp-link" href="https://www.visitjackson.com/events/" target="_blank">→ Visit Jackson Events</a>
+    </div>
+    <hr class="divider">
+
+    <div class="opp-item">
+      <div class="opp-header">
+        <span class="opp-name">Margarita Mixer Market Festival at the Jackson Zoo</span>
+        <span class="opp-tag">Vendor</span>
+      </div>
+      <div class="opp-meta">📅 May 2, 2026 · 12:00 PM &nbsp;|&nbsp; 📍 Jackson Zoo<br>Vendors + music + outdoor crowd = prime Frios territory. Great Pop Party or cart setup opportunity.</div>
+      <a class="opp-link" href="https://www.eventbrite.com/d/ms--jackson/events/" target="_blank">→ Check on Eventbrite</a>
+    </div>
+    <hr class="divider">
+
+    <div class="opp-item">
+      <div class="opp-header">
+        <span class="opp-name">Mississippi Makers Fest</span>
+        <span class="opp-tag">Vendor</span>
+      </div>
+      <div class="opp-meta">📅 May 9, 2026 &nbsp;|&nbsp; 📍 Two Mississippi Museums, 222 N Street, Jackson 39201<br>Arts &amp; makers community — family-friendly crowd, foot traffic, outdoor space. Strong fit for Sweet Ride.</div>
+      <a class="opp-link" href="https://www.visitjackson.com/events/" target="_blank">→ Visit Jackson Events</a>
+    </div>
+    <hr class="divider">
+
+    <div class="opp-item">
+      <div class="opp-header">
+        <span class="opp-name">Flowood Family Festival</span>
+        <span class="opp-tag">Vendor</span>
+      </div>
+      <div class="opp-meta">📅 May 15, 2026 &nbsp;|&nbsp; 📍 Flowood, MS<br>Family community event in your territory — great for Pop Party or cart. Suburb crowd loves a premium treat.</div>
+      <a class="opp-link" href="https://www.eventbrite.com/b/ms--flowood/community/" target="_blank">→ Flowood on Eventbrite</a>
+    </div>
+    <hr class="divider">
+
+    <div class="opp-item">
+      <div class="opp-header">
+        <span class="opp-name">Mississippi College School of Nursing — 300-Pop Event</span>
+        <span class="opp-tag">Pop Drop / Party</span>
+      </div>
+      <div class="opp-meta">📅 TBD (scheduling call with Callie) &nbsp;|&nbsp; 📍 Mississippi College, Clinton, MS<br>Warm lead already in your inbox! 300 pops — could be a great recurring account. <strong>Schedule the call today.</strong></div>
+    </div>
+
+    <div class="free-block">💡 Tip: If web search is thin for your Collins/south metro territory, check local Facebook community groups and Nextdoor for additional neighborhood events not listed online.</div>
+  </div>
+
+  <!-- Schedule -->
+  <div class="card calendar">
+    <h2>Schedule</h2>
+
+    <div class="cal-item">
+      <div class="time-pill">Morning</div>
+      <div>
+        <div class="cal-title">Free block — no meetings until afternoon</div>
+        <div class="cal-detail">Great window to call Callie at Mississippi College, register for vendor events, and handle any order logistics.</div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="cal-item">
+      <div class="time-pill">4:30 PM</div>
+      <div>
+        <div class="cal-title">Evie Crawford: Sweet Ride Experience — Madison, MS</div>
+        <div class="cal-detail">203 Calhoun Station Pkwy · 2 hours · 180 pops · Ends 6:30 PM</div>
+      </div>
+    </div>
+    <hr class="divider">
+    <div class="free-block">📌 Upcoming: Frios Round Table — Chart of Accounts / QuickBooks · Tue May 19, 10–11 AM CDT with Mendelson Consulting Team. Mark your calendar.</div>
+  </div>
+
+  <!-- Email -->
+  <div class="card">
+    <h2>Email</h2>
+    <div class="legend">
+      <div class="legend-item"><div class="dot dot-urgent"></div> Urgent / Act today</div>
+      <div class="legend-item"><div class="dot dot-respond"></div> Needs response</div>
+      <div class="legend-item"><div class="dot dot-fyi"></div> FYI</div>
+    </div>
+
+    <!-- Mississippi College — needs response -->
+    <div class="email-item">
+      <div class="dot dot-respond" style="margin-top:6px;"></div>
+      <div class="email-body">
+        <div class="email-sender">Callie Tate — Mississippi College School of Nursing</div>
+        <div class="email-subject">Re: Frios Gourmet Pops — Mississippi College School of Nursing</div>
+        <div class="email-snippet">She loved your reply and wants to schedule a call to finalize details for 300 pops. 11:30 AM drop-off works for her.</div>
+        <button class="show-reply-btn" onclick="toggleReply(this)">Show suggested reply</button>
+        <div class="reply-box">
+          <div class="reply-label">Suggested Reply</div>Hi Callie,
+
+So glad it works — looking forward to making your nursing school event a sweet one! Let's find a quick time to connect. Here are a few windows that work for me:
+
+- [Day/Time Option 1]
+- [Day/Time Option 2]
+
+Feel free to reply with what works best, or grab a time directly at [your scheduling link if applicable].
+
+Talk soon,
+Matt Collins
+Frios Gourmet Pops · Metro Jackson
+        </div>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Frios HQ Round Table -->
+    <div class="email-item">
+      <div class="dot dot-fyi" style="margin-top:6px;"></div>
+      <div class="email-body">
+        <div class="email-sender">Alison — Frios HQ</div>
+        <div class="email-subject">Frios Round Table — Chart of Accounts / QuickBooks · May 19</div>
+        <div class="email-snippet">Mendelson Consulting joining to walk through QuickBooks best practices. Tue May 19, 10–11 AM CDT. Google Meet link included.</div>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Darter order shipped -->
+    <div class="email-item">
+      <div class="dot dot-fyi" style="margin-top:6px;"></div>
+      <div class="email-body">
+        <div class="email-sender">Darter Specialties Inc.</div>
+        <div class="email-subject">Your order has shipped</div>
+        <div class="email-snippet">Order is on the way. Questions? Email Karen@darterspecialties.com or call 1-203-699-9805.</div>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Rankin Chamber — location change -->
+    <div class="email-item">
+      <div class="dot dot-fyi" style="margin-top:6px;"></div>
+      <div class="email-body">
+        <div class="email-sender">Rankin County Chamber</div>
+        <div class="email-subject">LOCATION CHANGE: Salute to Education — April 28</div>
+        <div class="email-snippet">Event moved to Brandon Civic Center. If you planned to attend, update your calendar.</div>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Square payout -->
+    <div class="email-item">
+      <div class="dot dot-fyi" style="margin-top:6px;"></div>
+      <div class="email-body">
+        <div class="email-sender">Square</div>
+        <div class="email-subject">Square has sent you $888.99</div>
+        <div class="email-snippet">Automatic transfer sent to your bank. Nothing to action.</div>
+      </div>
+    </div>
+    <hr class="divider">
+
+    <!-- Cortina Capital — solicitation, low priority -->
+    <div class="email-item">
+      <div class="dot dot-fyi" style="margin-top:6px;"></div>
+      <div class="email-body">
+        <div class="email-sender">Carlo Santelli — Cortina Capital</div>
+        <div class="email-subject">Re: Hello Matt, about Frios Pops (3rd follow-up)</div>
+        <div class="email-snippet">Investor group interested in acquiring Frios Pops — 3rd outreach. Not aligned with your growth plans. Safe to ignore or reply "not interested."</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; font-size:12px; color:#86868b; margin-top:24px;">
+    Generated April 23, 2026 · Frios Gourmet Pops Metro Jackson · Go make some happiness. 🍭
+  </div>
+
+</div>
+
+<script>
+  function toggleReply(btn) {
+    const box = btn.nextElementSibling;
+    if (box.style.display === 'block') {
+      box.style.display = 'none';
+      btn.textContent = 'Show suggested reply';
+    } else {
+      box.style.display = 'block';
+      btn.textContent = 'Hide reply';
+    }
+  }
+</script>
+</body>
+</html>
